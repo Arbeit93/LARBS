@@ -13,11 +13,11 @@ printf "${BLUE}Installing packer as an AUR manager...\n${NC}"
 
 aurinstall() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz && tar -xvf $1.tar.gz && cd $1 && makepkg --noconfirm -si && cd .. && rm -rf $1 $1.tar.gz ;}
 
-aurinstall packer || echo "Error installing packer." && exit
+aurinstall packer || (echo "Error installing packer." && exit)
 
 printf "${BLUE}Installing AUR programs...\n${NC}"
 printf "${BLUE}(May take some time.)\n${NC}"
-packer --noconfirm -S i3-gaps vim-pathogen vim-live-latex-preview neofetch i3lock tamzen-font-git neomutt transmission-remote-cli-git unclutter-xfixes-git urxvt-resize-font-git ttf-ancient-fonts polybar-git python-pywal xfce-theme-blackbird || echo "Error installing AUR packages. Check your internet connections and pacman keys." && exit
+packer --noconfirm -S i3-gaps vim-pathogen vim-live-latex-preview neofetch i3lock tamzen-font-git neomutt transmission-remote-cli-git unclutter-xfixes-git urxvt-resize-font-git ttf-ancient-fonts polybar-git python-pywal xfce-theme-blackbird || (echo "Error installing AUR packages. Check your internet connections and pacman keys." && exit)
 #packer --noconfirm -S ncpamixer-git speedometer cli-visualizer
 
 printf "${BLUE}Downloading config files...\n${NC}"
